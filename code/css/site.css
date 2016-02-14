@@ -31,6 +31,9 @@ div.footerline {
 	height: 70%;
 	min-height: 70%;
 }
+#padminbody{
+	min-height: 90%;
+}
 .align-center {
 	text-align: center;
 }
@@ -40,3 +43,4 @@ div.footerline {
 .contentrow {
 	min-height: 50%;
 }
+

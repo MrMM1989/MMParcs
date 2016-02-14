@@ -20,7 +20,7 @@
 		<div class="row footerline">
 			<div class="col-sm-12">
 				<p class="align-center">
-					<a href="index.php">Administratorpaneel</a>
+					<a href="index.php?uc=Admin-index">Administratorpaneel</a>
 				</p>
 			</div>
 		</div>
