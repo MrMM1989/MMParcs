@@ -5,6 +5,6 @@ class Home extends \ModernWays\Mvc\Controller {
 	
 	public function index(){
 		
-		echo 'Hallo van de homepage';
+		return $this->view('Home', 'Index', null);
 	}
 }
