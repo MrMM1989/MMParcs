@@ -8,3 +8,35 @@ html, body {
 body {
 	font-size: 16px;
 }
+header {
+	height: 10%;
+	width: 100%;	
+}
+footer {
+	background-color: #000000;
+	min-height: 20%;
+	padding-top: 2%;
+	width: 100%;
+}
+footer a{
+	color: #9d9d9d;
+}
+footer a:hover{
+	color: #ffffff;
+}
+div.footerline {
+	margin-bottom: 2%;
+}
+#pbody{	
+	height: 70%;
+	min-height: 70%;
+}
+.align-center {
+	text-align: center;
+}
+.align-right {
+	text-align: right;
+}
+.contentrow {
+	min-height: 50%;
+}
