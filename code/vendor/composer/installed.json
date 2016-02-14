@@ -1,0 +1,143 @@
+[
+    {
+        "name": "modernways/dialog",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://bitbucket.org/JefInghelbrecht/dialog.git",
+            "reference": "d7ef96d45e31a43e6866203011300b693cfe0f19"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://bitbucket.org/JefInghelbrecht/dialog/get/d7ef96d45e31a43e6866203011300b693cfe0f19.zip",
+            "reference": "d7ef96d45e31a43e6866203011300b693cfe0f19",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.5.0"
+        },
+        "time": "2016-01-25 16:57:27",
+        "type": "library",
+        "installation-source": "source",
+        "autoload": {
+            "psr-4": {
+                "ModernWays\\Dialog\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Jef Inghelbrecht",
+                "email": "jef.inghelbrecht@inantwerpen.com",
+                "homepage": "http://inantwerpen.com/"
+            }
+        ],
+        "description": "The Dialog component consists of classes to implement a notice board that can be used in all sort of applications",
+        "homepage": "http://modernways.be/",
+        "keywords": [
+            "errormessage",
+            "feedback",
+            "message",
+            "notice",
+            "notice board"
+        ]
+    },
+    {
+        "name": "modernways/mvc",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://bitbucket.org/JefInghelbrecht/threepenny-mvc.git",
+            "reference": "699936615c63fff1ede4cbc08faf5c146f91b528"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://bitbucket.org/JefInghelbrecht/threepenny-mvc/get/699936615c63fff1ede4cbc08faf5c146f91b528.zip",
+            "reference": "699936615c63fff1ede4cbc08faf5c146f91b528",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.5.0"
+        },
+        "time": "2016-01-25 17:00:23",
+        "type": "library",
+        "installation-source": "source",
+        "autoload": {
+            "psr-4": {
+                "ModernWays\\Mvc\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Jef Inghelbrecht",
+                "email": "jef.inghelbrecht@inantwerpen.com",
+                "homepage": "http://inantwerpen.com/"
+            }
+        ],
+        "description": "The Threepenny MVC component consists of 3 classes to implement a MVC pattern in all sort of applications",
+        "homepage": "http://modernways.be/",
+        "keywords": [
+            "control",
+            "model",
+            "mvc",
+            "threepenny",
+            "view"
+        ]
+    },
+    {
+        "name": "modernways/anormapart",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://bitbucket.org/JefInghelbrecht/anormapart.git",
+            "reference": "460484fbb9dc6e4c017ac1a9200c18a0a62d08a3"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://bitbucket.org/JefInghelbrecht/anormapart/get/460484fbb9dc6e4c017ac1a9200c18a0a62d08a3.zip",
+            "reference": "460484fbb9dc6e4c017ac1a9200c18a0a62d08a3",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.5.0"
+        },
+        "time": "2016-01-27 17:44:58",
+        "type": "library",
+        "installation-source": "source",
+        "autoload": {
+            "psr-4": {
+                "ModernWays\\AnOrmApart\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Jef Inghelbrecht",
+                "email": "jef.inghelbrecht@inantwerpen.com",
+                "homepage": "http://inantwerpen.com/"
+            }
+        ],
+        "description": "The An Orm Apart component consists of 4 base classes to implement An Orm Apart scaffolded DAL, Model, Controller classes and Views.",
+        "homepage": "http://modernways.be/",
+        "keywords": [
+            "anormapart",
+            "control",
+            "model",
+            "orm",
+            "view"
+        ]
+    }
+]

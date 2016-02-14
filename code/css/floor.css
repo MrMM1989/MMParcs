@@ -1,0 +1,20 @@
+/* 
+    floor 
+*/
+.floor {
+    width: 90%;
+    opacity: 0.9;
+    height: 100%;
+    margin: 0 5% 0 5%;
+    position: relative;    
+    background-color: white;
+    /* Er is telkens maar 1 div zichtbaar op de Wall, dus maken
+        we ze allemaal onzichtbaar in het begin, alleen als je
+        er naar toe wilt gaan, wordt de div zichtbaar. Daarvoor
+        maken gebruikt van het target pseudo-element. */   
+    display: none;
+}
+
+.floor:target {
+    display: block;
+}

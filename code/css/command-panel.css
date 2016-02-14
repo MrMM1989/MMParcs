@@ -1,0 +1,37 @@
+/* 
+    commando paneel 
+*/
+.command-panel {
+    height: 7%;
+    width: 100%;
+    position: relative;
+    background-color: #e24510; /*gray*/
+    /* border-bottom: 2px dotted rgb(226,69,16); */
+}
+
+/*
+    het uitzicht van de tegels hangt af van het element waarin
+    de tegel ligt
+    opmerking: Viewport-percentage lengths: the ‘vw’, ‘vh’, ‘vmin’, ‘vmax’ units
+    The viewport-percentage lengths are relative to the size of the initial containing block. 
+    When the height or width of the initial containing block is changed, 
+    they are scaled accordingly. 
+    However, when the value of ‘overflow’ on the root element is ‘auto’, 
+    any scroll bars are assumed not to exist.
+    Bron: http://www.w3.org/TR/css3-values/#viewport-relative-lengths
+*/
+
+.command-panel .tile {
+    color: white;
+    background-color: #e24510; /* grijs */
+    text-align: center;
+    border:  0;
+    border-right: 0.1em solid #fff;
+	line-height: 1.2em;
+    font-size: 3vh;
+}
+
+/* standaard hover kan overschreven worden door ander schema */
+.command-panel .tile:hover {
+    color: #3c3c3c;
+}

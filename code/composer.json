@@ -1,0 +1,7 @@
+{
+    "require": {
+        "modernways/mvc": "dev-master",
+        "modernways/dialog": "dev-master",
+        "modernways/anormapart": "dev-master"
+    }
+}
