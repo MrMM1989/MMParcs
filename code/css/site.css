@@ -34,6 +34,9 @@ div.footerline {
 #padminbody{
 	min-height: 90%;
 }
+.admin-content p {
+	margin: 3.5em 0;
+}
 .align-center {
 	text-align: center;
 }
@@ -43,4 +46,9 @@ div.footerline {
 .contentrow {
 	min-height: 50%;
 }
-
+.bold {
+	font-weight: bold;
+}
+.italic {
+	font-style: italic;
+}

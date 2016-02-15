@@ -11,10 +11,19 @@ class Zone extends \MMProgramming\MMParcs\Controller\DalController {
 		// Set modelName & load model and DAL
 		$this->modelName = $this->initModelName($this);
 		$this->loadModel($this->noticeBoard);
+		$this->loadDal($this->noticeBoard);
 	}
 	
 	public function index()
 	{
-		echo 'Zone - index';
+		$this->dal->readingAll();
+		return $this->view($this->modelName, 'Index', $this->model);
+	}
+	
+	public function readingOne()
+	{
+		$this->model->setId($this->route->getId());
+		$this->dal->readingOne();
+		return $this->view($this->modelName, 'ReadingOne', $this->model);
 	}
 }

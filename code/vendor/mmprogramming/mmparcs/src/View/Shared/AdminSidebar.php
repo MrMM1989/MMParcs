@@ -47,6 +47,9 @@
 			WEBSITE ADMINISTRATIE
 		</li>
 		<li>
+			<a href="index.php?uc=Admin-index">Admin Index</a>
+		</li>
+		<li>
 			<a href="index.php">Gastenboek</a>
 		</li>
 		<li>

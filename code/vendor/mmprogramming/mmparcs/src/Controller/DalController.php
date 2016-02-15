@@ -4,7 +4,11 @@ namespace MMProgramming\MMParcs\Controller;
 class DalController extends \ModernWays\Mvc\Controller {
 	
 	//Provider configuration
-	protected $providerName = 'MMParcs';
+	protected $providerName = 'DevLocal';
+	protected $databaseName = 'MMParcs';
+	protected $password = '';
+	protected $username = 'root';
+	protected $hostname = 'localhost:3306';
 	
 	protected $dal;
 	protected $model;
@@ -44,6 +48,10 @@ class DalController extends \ModernWays\Mvc\Controller {
 	{
 		// Create provider
 		$this->provider = new \ModernWays\AnOrmApart\Provider($this->providerName, $noticeBoard);
+		$this->provider->setDatabaseName($this->databaseName);
+		$this->provider->setHostName($this->hostname);
+		$this->provider->setUserName($this->username);
+		$this->provider->setPassword($this->password);
 		
 		// Load DAL
 		$dalClass = $this->loadDalClass($this->modelName);

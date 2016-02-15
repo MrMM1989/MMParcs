@@ -2,9 +2,9 @@ USE MMParcs;
 -- -----------------------------------------------------
 -- Create Procedure ZoneReadingOne
 -- -----------------------------------------------------
-DROP PROCEDURE IF EXISTS ZoneReadingOne;
+DROP PROCEDURE IF EXISTS ZoneSelectOne;
 DELIMITER //
-CREATE PROCEDURE ZoneReadingOne(
+CREATE PROCEDURE ZoneSelectOne(
 	pId INT
 )
 BEGIN
