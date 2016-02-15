@@ -22,7 +22,7 @@
 			<a href="index.php">Vacatures</a>
 		</li>
 		<li>
-			<a href="index.php">Zones</a>
+			<a href="index.php?uc=Zone-index">Zones</a>
 		</li>
 	</ul>
 	<ul class="nav nav-sidebar">

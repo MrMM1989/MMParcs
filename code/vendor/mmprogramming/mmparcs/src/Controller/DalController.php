@@ -4,7 +4,7 @@ namespace MMProgramming\MMParcs\Controller;
 class DalController extends \ModernWays\Mvc\Controller {
 	
 	//Provider configuration
-	protected $providerName = '';
+	protected $providerName = 'MMParcs';
 	
 	protected $dal;
 	protected $model;
@@ -72,13 +72,13 @@ class DalController extends \ModernWays\Mvc\Controller {
 	
 	private function loadModelClass($modelName){
 		
-		$modelClass = '\ModernWays\Webshop\Model\\'.$modelName;
+		$modelClass = '\MMProgramming\MMParcs\Model\\'.$modelName;
 		return $modelClass;		
 	}
 	
 	private function loadDalClass($dalName){
 		
-		$dalClass = '\ModernWays\Webshop\Dal\\'.$dalName;
+		$dalClass = '\MMProgramming\MMParcs\Dal\\'.$dalName;
 		return $dalClass;
 	}	
 	
