@@ -7,6 +7,7 @@
  */
 // laadt de composer autoloader
 require __dir__ . '/vendor/autoload.php';
+
 $appState = new \ModernWays\AnOrmApart\NoticeBoard();
 
 //$session = new \ModernWays\Identity\Session($appState);
