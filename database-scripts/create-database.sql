@@ -1,5 +1,8 @@
 -- MySQL Workbench Forward Engineering
 
+-- -----------------------------------------------------
+-- Schema MMParcs
+-- -----------------------------------------------------
 USE `MMParcs` ;
 
 -- -----------------------------------------------------
@@ -82,5 +85,38 @@ CREATE TABLE IF NOT EXISTS `MMParcs`.`Attraction` (
   CONSTRAINT `FK_A_SectorId`
     FOREIGN KEY (`SectorId`)
     REFERENCES `MMParcs`.`Sector` (`Id`)
+    ON DELETE RESTRICT
+    ON UPDATE CASCADE);
+
+
+-- -----------------------------------------------------
+-- Table `MMParcs`.`Role`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `MMParcs`.`Role` (
+  `Id` INT NOT NULL AUTO_INCREMENT,
+  `Name` VARCHAR(50) NOT NULL,
+  `Description` TEXT NULL,
+  PRIMARY KEY (`Id`),
+  UNIQUE INDEX `Name_UNIQUE` (`Name` ASC));
+
+
+-- -----------------------------------------------------
+-- Table `MMParcs`.`User`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `MMParcs`.`User` (
+  `Id` INT NOT NULL AUTO_INCREMENT,
+  `Name` VARCHAR(100) NOT NULL,
+  `Email` VARCHAR(255) NOT NULL,
+  `Password` VARCHAR(255) NOT NULL,
+  `DateRegistration` DATETIME NOT NULL,
+  `DateLastLogin` DATETIME NULL,
+  `IsBanned` TINYINT(1) NOT NULL DEFAULT 0,
+  `RoleId` INT NULL,
+  PRIMARY KEY (`Id`),
+  UNIQUE INDEX `Email_UNIQUE` (`Email` ASC),
+  INDEX `FK_U_RoleId_idx` (`RoleId` ASC),
+  CONSTRAINT `FK_U_RoleId`
+    FOREIGN KEY (`RoleId`)
+    REFERENCES `MMParcs`.`Role` (`Id`)
     ON DELETE RESTRICT
     ON UPDATE CASCADE);
