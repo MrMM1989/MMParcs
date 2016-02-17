@@ -34,7 +34,7 @@ div.footerline {
 #padminbody{
 	min-height: 90%;
 }
-.admin-content p {
+.admin-content p, .form-group {
 	margin: 3.5em 0;
 }
 .align-center {
@@ -51,4 +51,17 @@ div.footerline {
 }
 .italic {
 	font-style: italic;
+}
+.nav-sidebar{
+	padding-bottom: 3em;
+}
+.btn{
+	font-size: 1em;
+	margin-right: 1em;
+}
+.button {
+	font-size: 1.2em;
+}
+.red{
+	color: #990000;
 }

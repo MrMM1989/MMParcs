@@ -34,15 +34,15 @@ class Category extends \ModernWays\Webshop\Controller\AppController
 
     public function editing()
     {
-        if ($this->isAuthorized($this->isAuthenticated(), 'Admin')) {
+       /* if ($this->isAuthorized($this->isAuthenticated(), 'Admin')) {*/
             $model = new \ModernWays\Webshop\Model\Category($this->noticeBoard);
             $provider = new \ModernWays\AnOrmApart\Provider('WebwinkelOVH', $this->noticeBoard);
             $dal = new \ModernWays\Webshop\Dal\Category($model, $provider);
             $dal->readingAll();
             return $this->view('Category', 'Editing', $model);
-        } else {
+       /* } else {
             return $this->view('Admin', 'Index', null);
-        }
+        }*/
 
     }
 
