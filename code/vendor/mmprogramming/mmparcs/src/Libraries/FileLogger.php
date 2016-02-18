@@ -3,18 +3,15 @@ namespace MMProgramming\MMParcs\Libraries;
 
 class FileLogger {
 	
-	/*
-	 * If your applications index.php is in a subfolder of your server document root, define it here
-	 * otherwise leave it empty
-	 */
-	protected $applicationDir = '/cvo/programmeren4/mmparcs';
+	
+	protected $applicationDir; 
 	
 	protected $logDir;
 	
 	public function __construct(){
 		
-		//Need constructor to initialise this variable because of $_SERVER superglobal
-		$this->logDir = $_SERVER['DOCUMENT_ROOT'].$this->applicationDir.'/log';		
+		$this->applicationDir = str_replace('\vendor\mmprogramming\mmparcs\src\Libraries', '', __dir__);
+		$this->logDir = $this->applicationDir.'/log';		
 	}
 	
 	public function getLogList(){

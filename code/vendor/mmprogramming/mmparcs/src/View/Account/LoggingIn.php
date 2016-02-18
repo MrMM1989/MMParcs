@@ -23,7 +23,7 @@ $partialView('Shared', 'Header');
 			<strong><?php echo $title; ?></strong> <?php echo $message; ?>
 		</div>
 	<?php endif; ?>
-	<form class="user-form" action="index.php?uc=Account-login" method="post">
+		<form class="user-form" action="index.php?uc=Account-login" method="post">
 		<div class="form-group">
 			<label for="account-email">Email: </label>
 			<input type="email" id="account-email" class="form-control" name="account-email"
