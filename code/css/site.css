@@ -28,7 +28,6 @@ div.footerline {
 	margin-bottom: 2%;
 }
 #pbody{	
-	height: 70%;
 	min-height: 70%;
 }
 #padminbody{
@@ -55,12 +54,21 @@ div.footerline {
 .nav-sidebar{
 	padding-bottom: 3em;
 }
+.user-form{
+	padding-bottom: 5em;
+}
 .btn{
 	font-size: 1em;
 	margin-right: 1em;
 }
 .button {
 	font-size: 1.2em;
+}
+.m5t{
+	margin-top: 5em;
+}
+.p3t{
+	padding-top: 3em;
 }
 .red{
 	color: #990000;

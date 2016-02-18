@@ -19,14 +19,7 @@
 						<a href="index.php">Gastenboek</a>
 					</li>
 				</ul>
-				<ul class="nav navbar-nav navbar-right">
-					<li>
-						<a href="index.php"><i class="fa fa-sign-in"></i> Inloggen</a>
-					</li>
-					<li>
-						<a href="index.php"><i class="fa fa-user-plus"></i> Registreren</a>
-					</li>
-				</ul>
+				<?php include ('UserNav.php'); ?>
 			</div>
 		</div>
 	</nav>

@@ -10,8 +10,8 @@ require __dir__ . '/vendor/autoload.php';
 
 $appState = new \ModernWays\AnOrmApart\NoticeBoard();
 
-//$session = new \ModernWays\Identity\Session($appState);
-//$session->start();
+$session = new \ModernWays\Identity\Session($appState);
+$session->start();
 
 $route = new \ModernWays\Mvc\Route($appState, 'Home-index');
 $routeConfig = new \ModernWays\Mvc\RouteConfig('\MMProgramming\MMParcs', $route, $appState);

@@ -28,6 +28,17 @@ class DalController extends \ModernWays\Mvc\Controller {
 		return $this->modelName;
 	}
 	
+	public function createProvider($noticeBoard)
+	{
+		$provider = new \ModernWays\AnOrmApart\Provider($this->providerName, $noticeBoard);
+		$provider->setDatabaseName($this->databaseName);
+		$provider->setHostName($this->hostname);
+		$provider->setUserName($this->username);
+		$provider->setPassword($this->password);
+		
+		return $provider;
+	}
+	
 	public function loadModel($noticeBoard)
 	{
 		$modelClass = $this->loadModelClass($this->modelName);
@@ -47,11 +58,7 @@ class DalController extends \ModernWays\Mvc\Controller {
 	public function loadDal($noticeBoard)
 	{
 		// Create provider
-		$this->provider = new \ModernWays\AnOrmApart\Provider($this->providerName, $noticeBoard);
-		$this->provider->setDatabaseName($this->databaseName);
-		$this->provider->setHostName($this->hostname);
-		$this->provider->setUserName($this->username);
-		$this->provider->setPassword($this->password);
+		$this->provider = $this->createProvider($noticeBoard);
 		
 		// Load DAL
 		$dalClass = $this->loadDalClass($this->modelName);
