@@ -3,9 +3,14 @@
 	<h1 class="page-header">Registreer een account</h1>
 	<form class="user-form" action="index.php?uc=Account-createOne" method="post">
 		<div class="form-group">
-			<label for="account-name">Naam: </label>
-			<input type="text" id="account-name" class="form-control" name="account-name"
-			placeholder="Geef hier je naam op" required/>
+			<label for="account-firstname">Voornaam: </label>
+			<input type="text" id="account-firstname" class="form-control" name="account-firstname"
+			placeholder="Geef hier je voornaam op" required/>
+		</div>
+		<div class="form-group">
+			<label for="account-lastname">Achternaam: </label>
+			<input type="text" id="account-lastname" class="form-control" name="account-lastname"
+			placeholder="Geef hier je achternaam op" required/>
 		</div>
 		<div class="form-group">
 			<label for="account-email">Email: </label>

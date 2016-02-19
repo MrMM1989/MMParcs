@@ -35,7 +35,7 @@ class Authentication {
 				if (password_verify($inputPassword, $credentials['Password'])) {
 					$this -> session -> setTicket($credentials['Password']);
 					$this -> session -> setPositiveInteger('UserId', $credentials['Id']);
-					$this -> session -> setText('UserName', $credentials['Name']);
+					$this -> session -> setText('UserName', $credentials['FirstName']);
 					$_SESSION['UserEmail'] = $credentials['Email'];
 					return true;
 				} else {

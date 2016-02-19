@@ -15,9 +15,12 @@ class User extends \ModernWays\AnOrmApart\Dal {
 			try {
 
 				//Prepare the statement
-				$insertSql = 'INSERT INTO User (Name, Email, Password, DateRegistration) VALUES (:name, :email, :password, NOW())';
+				$insertSql = 'INSERT INTO User (FirstName, LastName, Email, Password, DateRegistration, RoleId) 
+												VALUES (:firstname, :lastname, :email, :password, NOW(), 
+												(SELECT CValue FROM Configuration WHERE CKey = "UserRole"))';
 				$preparedStatement = $this -> provider -> getPdo() -> prepare($insertSql);
-				$preparedStatement -> bindValue(':name', $this -> model -> getName(), \PDO::PARAM_STR);
+				$preparedStatement -> bindValue(':firstname', $this -> model -> getFirstName(), \PDO::PARAM_STR);
+				$preparedStatement -> bindValue(':lastname', $this -> model -> getLastName(), \PDO::PARAM_STR);
 				$preparedStatement -> bindValue(':email', $this -> model -> getEmail(), \PDO::PARAM_STR);
 				$preparedStatement -> bindValue(':password', $this -> model -> getPassword(), \PDO::PARAM_STR);
 				
@@ -43,7 +46,7 @@ class User extends \ModernWays\AnOrmApart\Dal {
             try {
             	  		
             	  	//Prepare statement
-                	$credentialSql = 'SELECT Id, Name, Email, Password FROM User WHERE Email = :email LIMIT 1';
+                	$credentialSql = 'SELECT Id, FirstName, Email, Password FROM User WHERE Email = :email LIMIT 1';
 					$preparedStatement = $this->provider->getPdo()->prepare($credentialSql);
 					$preparedStatement -> bindValue(':email', $email, \PDO::PARAM_STR);
 					

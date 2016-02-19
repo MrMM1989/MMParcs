@@ -44,7 +44,8 @@ class Account extends \MMProgramming\MMParcs\Controller\AppController {
 			return $this -> view('Home', 'Index', null);
 
 		} else {
-			$this -> model -> setName(filter_input(INPUT_POST, 'account-name', FILTER_SANITIZE_STRING));
+			$this -> model -> setFirstName(filter_input(INPUT_POST, 'account-firstname', FILTER_SANITIZE_STRING));
+			$this -> model -> setLastName(filter_input(INPUT_POST, 'account-lastname', FILTER_SANITIZE_STRING));
 			$this -> model -> setEmail(filter_input(INPUT_POST, 'account-email', FILTER_SANITIZE_STRING));
 
 			//Hash the password

@@ -1,4 +1,6 @@
--- MySQL Workbench Forward Engineering
+-- MySQL Workbench Forward Engineering for table DDL
+
+-- Stored Procedures, Views and Init by Maarten Marreel
 
 -- -----------------------------------------------------
 -- Schema MMParcs
@@ -185,3 +187,86 @@ CREATE TABLE IF NOT EXISTS `MMParcs`.`PermissionRole` (
     ON DELETE NO ACTION
     ON UPDATE CASCADE);
 
+-- -----------------------------------------------------
+-- Create Procedure RoleReadingAll
+-- -----------------------------------------------------
+DROP PROCEDURE IF EXISTS RoleSelectAll;
+DELIMITER //
+CREATE PROCEDURE RoleSelectAll()
+BEGIN
+SELECT Id, Name 
+FROM Role;
+END //
+DELIMITER ;
+
+-- -----------------------------------------------------
+-- Create Procedure RoleReadingOne
+-- -----------------------------------------------------
+DROP PROCEDURE IF EXISTS RoleSelectOne;
+DELIMITER //
+CREATE PROCEDURE RoleSelectOne(
+	pId INT
+)
+BEGIN
+SELECT Id, Name, Description 
+FROM Role
+WHERE Id = pId;
+END //
+DELIMITER ;
+
+-- -----------------------------------------------------
+-- Create Procedure UserReadingAll
+-- -----------------------------------------------------
+DROP PROCEDURE IF EXISTS UserSelectAll;
+DELIMITER //
+CREATE PROCEDURE UserSelectAll()
+BEGIN
+SELECT Id, FirstName, LastName 
+FROM User;
+END //
+DELIMITER ;
+
+-- -----------------------------------------------------
+-- Create Procedure ZoneReadingAll
+-- -----------------------------------------------------
+DROP PROCEDURE IF EXISTS ZoneSelectAll;
+DELIMITER //
+CREATE PROCEDURE ZoneSelectAll()
+BEGIN
+SELECT Id, Name 
+FROM Zone;
+END //
+DELIMITER ;
+
+-- -----------------------------------------------------
+-- Create Procedure ZoneReadingOne
+-- -----------------------------------------------------
+DROP PROCEDURE IF EXISTS ZoneSelectOne;
+DELIMITER //
+CREATE PROCEDURE ZoneSelectOne(
+	pId INT
+)
+BEGIN
+SELECT Id, Name, Address 
+FROM Zone
+WHERE Id = pId;
+END //
+DELIMITER ;
+
+-- -----------------------------------------------------
+-- Init Table Role
+-- -----------------------------------------------------
+INSERT INTO Role (Name, Description) VALUES ('Superadministrator', 'Superadministrators zijn de hoofdbeheerders en/of eigenaars van de website. Zij hebben altijd alle rechten. Voorzichtigheid is geboden bij het toekennen van deze rol aan een gebruiker.');
+INSERT INTO Role (Name, Description) VALUES ('Gebruiker', 'De standaard gebruikerrol die toegekend wordt aan de pas geregistreerde gebruikers');
+
+-- -----------------------------------------------------
+-- Init Table Zone
+-- -----------------------------------------------------
+INSERT INTO Zone (Name, Address) VALUES ('Hoofdgebouwen', 'Pretparkstraat 50 0001 Spelstad');
+INSERT INTO Zone (Name, Address) VALUES ('Attractiepark', 'Pretparkstraat 150 0001 Spelstad');
+
+-- -----------------------------------------------------
+-- Init Table Configuration
+-- -----------------------------------------------------
+INSERT INTO Configuration (CKey, CValue) VALUES ('SuperadministratorRole', (SELECT Id FROM Role WHERE Name = 'Superadministrator'));
+INSERT INTO Configuration (CKey, CValue) VALUES ('UserRole', (SELECT Id FROM Role WHERE Name = 'Gebruiker'));

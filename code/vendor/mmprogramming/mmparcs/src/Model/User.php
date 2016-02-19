@@ -4,7 +4,8 @@ namespace MMProgramming\MMParcs\Model;
 class User extends \ModernWays\Mvc\Model{
 	
 	private $id;
-	private $name;
+	private $firstName;
+	private $lastName;
 	private $email;
 	private $password;
 	private $dateRegistration;
@@ -20,12 +21,20 @@ class User extends \ModernWays\Mvc\Model{
 		$this->id = $value;
 	}
 	
-	public function getName(){
-		return $this->name;
+	public function getFirstName(){
+		return $this->firstName;
 	}
 	
-	public function setName($value){
-		$this->name = $value;
+	public function setFirstName($value){
+		$this->firstName = $value;
+	}
+	
+	public function getLastName(){
+		return $this->lastName;
+	}
+	
+	public function setLastName($value){
+		$this->lastName = $value;
 	}
 	
 	public function getEmail(){

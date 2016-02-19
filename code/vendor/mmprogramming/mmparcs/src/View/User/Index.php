@@ -11,7 +11,10 @@
 							Gebruikernummer
 						</th>
 						<th>
-							Naam
+							Voornaam
+						</th>
+						<th>
+							Achternaam
 						</th>
 						<th>
 						</th>
@@ -19,7 +22,8 @@
 					<?php foreach($model->getList() as $item): ?>
 						<tr>
 							<td><?php echo $item['Id']; ?></td>
-							<td><?php echo $item['Name']; ?></td>
+							<td><?php echo $item['FirstName']; ?></td>
+							<td><?php echo $item['LastName']; ?></td>
 							<td><a class="red" href="index.php?uc=User-readingOne_<?php echo $item['Id']; ?>">Selecteer</a></td>
 						</tr>
 					<?php endforeach; ?>
