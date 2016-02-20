@@ -260,6 +260,30 @@ INSERT INTO Role (Name, Description) VALUES ('Superadministrator', 'Superadminis
 INSERT INTO Role (Name, Description) VALUES ('Gebruiker', 'De standaard gebruikerrol die toegekend wordt aan de pas geregistreerde gebruikers');
 
 -- -----------------------------------------------------
+-- Init Table PermissionGroup
+-- -----------------------------------------------------
+INSERT INTO PermissionGroup (Name) VALUES ('Algemeen');
+INSERT INTO PermissionGroup (Name) VALUES ('Gebruikers & Rollen');
+INSERT INTO PermissionGroup (Name) VALUES ('Zones');
+
+-- -----------------------------------------------------
+-- Init Table Permission
+-- -----------------------------------------------------
+INSERT INTO Permission (Name, Description, PermissionGroupId) VALUES ('AdminAccess', 'Kan in het administratorpaneel', (SELECT Id FROM PermissionGroup WHERE Name = 'Algemeen'));
+INSERT INTO Permission (Name, Description, PermissionGroupId) VALUES ('SetupAccess', 'Kan siteinstellingen beheren', (SELECT Id FROM PermissionGroup WHERE Name = 'Algemeen'));
+INSERT INTO Permission (Name, Description, PermissionGroupId) VALUES ('UserIndex', 'Kan gebruikerslijst bekijken', (SELECT Id FROM PermissionGroup WHERE Name = 'Gebruikers & Rollen'));
+INSERT INTO Permission (Name, Description, PermissionGroupId) VALUES ('UserDetail', 'Kan details van een gebruiker bekijken', (SELECT Id FROM PermissionGroup WHERE Name = 'Gebruikers & Rollen'));
+INSERT INTO Permission (Name, Description, PermissionGroupId) VALUES ('UserUpdate', 'Kan een gebruiker bewerken', (SELECT Id FROM PermissionGroup WHERE Name = 'Gebruikers & Rollen'));
+INSERT INTO Permission (Name, Description, PermissionGroupId) VALUES ('UserDelete', 'Kan een gebruiker verwijderen', (SELECT Id FROM PermissionGroup WHERE Name = 'Gebruikers & Rollen'));
+INSERT INTO Permission (Name, Description, PermissionGroupId) VALUES ('RoleIndex', 'Kan rollenlijst bekijken', (SELECT Id FROM PermissionGroup WHERE Name = 'Gebruikers & Rollen'));
+INSERT INTO Permission (Name, Description, PermissionGroupId) VALUES ('RoleDetail', 'Kan details van een rol bekijken', (SELECT Id FROM PermissionGroup WHERE Name = 'Gebruikers & Rollen'));
+INSERT INTO Permission (Name, Description, PermissionGroupId) VALUES ('RoleUpdate', 'Kan een rol bewerken', (SELECT Id FROM PermissionGroup WHERE Name = 'Gebruikers & Rollen'));
+INSERT INTO Permission (Name, Description, PermissionGroupId) VALUES ('RoleDelete', 'Kan een rol verwijderen', (SELECT Id FROM PermissionGroup WHERE Name = 'Gebruikers & Rollen'));
+INSERT INTO Permission (Name, Description, PermissionGroupId) VALUES ('PermAccess', 'Kan permissies bij een rol beheren', (SELECT Id FROM PermissionGroup WHERE Name = 'Gebruikers & Rollen'));
+INSERT INTO Permission (Name, Description, PermissionGroupId) VALUES ('ZoneIndex', 'Kan zonelijst bekijken', (SELECT Id FROM PermissionGroup WHERE Name = 'Zones'));
+INSERT INTO Permission (Name, Description, PermissionGroupId) VALUES ('ZoneDetail', 'Kan details van een zone bekijken', (SELECT Id FROM PermissionGroup WHERE Name = 'Zones'));
+
+-- -----------------------------------------------------
 -- Init Table Zone
 -- -----------------------------------------------------
 INSERT INTO Zone (Name, Address) VALUES ('Hoofdgebouwen', 'Pretparkstraat 50 0001 Spelstad');
@@ -270,3 +294,55 @@ INSERT INTO Zone (Name, Address) VALUES ('Attractiepark', 'Pretparkstraat 150 00
 -- -----------------------------------------------------
 INSERT INTO Configuration (CKey, CValue) VALUES ('SuperadministratorRole', (SELECT Id FROM Role WHERE Name = 'Superadministrator'));
 INSERT INTO Configuration (CKey, CValue) VALUES ('UserRole', (SELECT Id FROM Role WHERE Name = 'Gebruiker'));
+
+-- -----------------------------------------------------
+-- Create Procedure InitSuperadminPermissions
+-- -----------------------------------------------------
+DROP PROCEDURE IF EXISTS InitSuperadminPermissions;
+DELIMITER //
+CREATE PROCEDURE InitSuperadminPermissions()
+BEGIN
+	DECLARE adminRole INT;
+    DECLARE permCount INT;
+    DECLARE counter INT;
+    SELECT CValue FROM Configuration WHERE CKey = 'SuperadministratorRole' INTO adminRole;
+    SELECT COUNT(*) FROM Permission INTO permCount;
+    SET counter = 1;
+    REPEAT
+   	INSERT INTO PermissionRole (HasPermission, PermissionId, RoleId) VALUES (1, counter, adminRole); 
+    SET counter = counter +1;
+    UNTIL counter > permCount  END REPEAT;
+    
+END //
+DELIMITER ;
+
+-- -----------------------------------------------------
+-- Create Procedure InitUserPermissions
+-- -----------------------------------------------------
+DROP PROCEDURE IF EXISTS InitUserPermissions;
+DELIMITER //
+CREATE PROCEDURE InitUserPermissions()
+BEGIN
+	DECLARE userRole INT;
+    DECLARE permCount INT;
+    DECLARE counter INT;
+    SELECT CValue FROM Configuration WHERE CKey = 'UserRole' INTO userRole;
+    SELECT COUNT(*) FROM Permission INTO permCount;
+    SET counter = 1;
+    REPEAT
+   	INSERT INTO PermissionRole (HasPermission, PermissionId, RoleId) VALUES (0, counter, userRole); 
+    SET counter = counter +1;
+    UNTIL counter > permCount  END REPEAT;
+    
+END //
+DELIMITER ;
+
+-- -----------------------------------------------------
+-- Call & Drop Init Procedures
+-- -----------------------------------------------------
+
+CALL InitSuperadminPermissions();
+CALL InitUserPermissions();
+
+DROP PROCEDURE InitSuperadminPermissions;
+DROP PROCEDURE InitUserPermissions;
