@@ -11,7 +11,8 @@ class User extends \ModernWays\Mvc\Model{
 	private $dateRegistration;
 	private $dateLastLogin;
 	private $isBanned;
-	private $roleId;
+	private $roleId;	
+	private $roleName;
 	
 	public function getId(){
 		return $this->id;
@@ -83,6 +84,14 @@ class User extends \ModernWays\Mvc\Model{
 	
 	public function setRoleId($value){
 		$this->roleId = $value;
+	}
+	
+	public function getRoleName(){
+		return $this->roleName;
+	}
+	
+	public function setRoleName($value){
+		$this->roleName = $value;
 	}
 	
 	public function setAuthFailedMessage(){

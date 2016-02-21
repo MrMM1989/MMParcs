@@ -56,7 +56,13 @@
 			<a href="index.php?uc=User-index">Gebruikers</a>
 		</li>
 		<li>
+			<a class="red" href="index.php?uc=Admin-index">Permissies</a>
+		</li>
+		<li>
 			<a href="index.php?uc=Role-index">Rollen</a>
+		</li>
+		<li>
+			<a class="red" href="index.php?uc=Admin-index">Website Configuratie</a>
 		</li>
 	</ul>
 </div>

@@ -1,6 +1,6 @@
 -- MySQL Workbench Forward Engineering for table DDL
 
--- Stored Procedures, Views and Init by Maarten Marreel
+-- Stored Procedures, Views, Triggers and Init by Maarten Marreel
 
 -- -----------------------------------------------------
 -- Schema MMParcs
@@ -254,6 +254,16 @@ END //
 DELIMITER ;
 
 -- -----------------------------------------------------
+-- Create View vwReadUserRole
+-- -----------------------------------------------------
+DROP VIEW IF EXISTS vwReadUserRole;
+CREATE VIEW vwReadUserRole AS
+SELECT u.Id, u.FirstName, u.LastName, u.Email, u.DateRegistration, u.DateLastLogin, u.IsBanned, u.RoleId, r.Name
+FROM User AS u 
+INNER JOIN Role AS r
+ON u.RoleId = r.Id;
+
+-- -----------------------------------------------------
 -- Init Table Role
 -- -----------------------------------------------------
 INSERT INTO Role (Name, Description) VALUES ('Superadministrator', 'Superadministrators zijn de hoofdbeheerders en/of eigenaars van de website. Zij hebben altijd alle rechten. Voorzichtigheid is geboden bij het toekennen van deze rol aan een gebruiker.');
@@ -346,3 +356,25 @@ CALL InitUserPermissions();
 
 DROP PROCEDURE InitSuperadminPermissions;
 DROP PROCEDURE InitUserPermissions;
+
+
+-- -----------------------------------------------------
+-- Create Trigger InitNewRolePermissions
+-- -----------------------------------------------------
+DROP TRIGGER IF EXISTS InitNewRolePermissions;
+DELIMITER //
+CREATE TRIGGER InitNewRolePermissions
+AFTER INSERT ON Role FOR EACH ROW 
+BEGIN
+	DECLARE role INT;
+	DECLARE permCount INT;
+	DECLARE counter INT;
+	SET role = NEW.Id;
+	SELECT COUNT(*) FROM Permission INTO permCount;
+    SET counter = 1;
+	REPEAT
+   	INSERT INTO PermissionRole (HasPermission, PermissionId, RoleId) VALUES (0, counter, role); 
+    SET counter = counter +1;
+    UNTIL counter > permCount  END REPEAT;
+END //
+DELIMITER ;

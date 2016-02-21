@@ -19,4 +19,11 @@ class User extends \MMProgramming\MMParcs\Controller\DalController {
 		$this->dal->readingAll();		
 		return $this->view($this->modelName, 'Index', $this->model);
 	}
+	
+	public function readingOne(){
+		
+		$this->model->setId($this->route->getId());
+		$this->dal->readingOne();
+		return $this->view($this->modelName, 'ReadingOne', $this->model);
+	}
 }

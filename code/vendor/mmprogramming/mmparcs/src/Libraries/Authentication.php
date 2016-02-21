@@ -31,7 +31,7 @@ class Authentication {
 
 			//Check if user exists
 			if ($credentials = $this -> user -> readUserCredentials($inputEmail)) {
-
+						
 				if (password_verify($inputPassword, $credentials['Password'])) {
 					$this -> session -> setTicket($credentials['Password']);
 					$this -> session -> setPositiveInteger('UserId', $credentials['Id']);

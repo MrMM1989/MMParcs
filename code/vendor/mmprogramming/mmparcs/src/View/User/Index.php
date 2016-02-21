@@ -7,6 +7,7 @@
 			<h2 class="sub-header">Huidige gebruikers</h2>
 			<?php if($model->getList()> 0): ?>
 				<table class="table m5t">
+					<tr>
 						<th>
 							Gebruikernummer
 						</th>

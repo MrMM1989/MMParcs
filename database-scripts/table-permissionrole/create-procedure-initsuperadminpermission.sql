@@ -1,6 +1,6 @@
 USE MMParcs;
 -- -----------------------------------------------------
--- Create Procedure initSuperadminPermissions
+-- Create Procedure InitSuperadminPermissions
 -- -----------------------------------------------------
 DROP PROCEDURE IF EXISTS InitSuperadminPermissions;
 DELIMITER //

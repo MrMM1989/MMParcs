@@ -4,7 +4,7 @@
  * User: jefin
  * Date: 25/01/2016
  * Time: 19:51
- */
+ */ 
 // laadt de composer autoloader
 require __dir__ . '/vendor/autoload.php';
 

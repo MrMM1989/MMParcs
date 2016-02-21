@@ -1,6 +1,6 @@
 USE MMParcs;
 -- -----------------------------------------------------
--- Create Procedure initUserPermissions
+-- Create Procedure InitUserPermissions
 -- -----------------------------------------------------
 DROP PROCEDURE IF EXISTS InitUserPermissions;
 DELIMITER //
